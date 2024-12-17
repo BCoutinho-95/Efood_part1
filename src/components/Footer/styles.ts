@@ -1,7 +1,10 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const Container = styled.footer`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: ${cores.bege};
   height: 298px;
   margin-top: 72px;
@@ -20,6 +23,14 @@ export const SectionLogo = styled.div`
 
   img {
     margin-top: 40px;
+  }
+
+  @media (max-width: ${breakpoints.desktop}) {
+    margin: 0px 245px 0 245px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    margin: 0px 108px 0 108px;
   }
 `
 

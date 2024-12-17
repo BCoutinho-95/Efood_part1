@@ -7,6 +7,7 @@ export const Image = styled.div`
   display: block;
   background-repeat: no-repeat;
   background-size: cover;
+  margin-bottom: 56px;
 `
 
 export const Title = styled.p`

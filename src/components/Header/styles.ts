@@ -1,10 +1,11 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const HeaderBar = styled.header`
   width: 100%;
   height: 186px;
-  display: block;
+  display: flex;
+  align-items: center;
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -27,6 +28,26 @@ export const HeaderBar = styled.header`
       margin-left: 341px;
     }
   }
+
+  @media (max-width: ${breakpoints.desktop}) {
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      img {
+        margin: 0;
+      }
+    }
+
+    @media (max-width: ${breakpoints.tablet}) {
+    img {
+    padding-left: 12px;
+    padding-right: 12px;
+    }
+
+      a {
+    font-size: 14px;
+  }
 `
 
 export const Links = styled.ul`
@@ -36,4 +57,8 @@ export const Links = styled.ul`
 export const LinkCart = styled.a`
   display: flex;
   margin-left: 193px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    margin: 0;
+  }
 `
