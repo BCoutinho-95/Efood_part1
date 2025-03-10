@@ -1,12 +1,13 @@
-import { Restaurante } from '../../pages/Home'
+import Loader from '../Loader'
 import Restaurant from '../Restaurant'
 import { Container, List } from './styles'
 
 export type Props = {
-  restaurantes: Restaurante[]
+  restaurantes?: Restaurante[]
+  isLoading: boolean
 }
 
-const RestaurantsList = ({ restaurantes }: Props) => {
+const RestaurantsList = ({ restaurantes, isLoading }: Props) => {
   const getTags = (restaurante: Restaurante) => {
     const tags: string[] = []
 
@@ -21,11 +22,15 @@ const RestaurantsList = ({ restaurantes }: Props) => {
     return tags
   }
 
+  if (isLoading) {
+    return <Loader />
+  }
+
   return (
     <Container>
       <div className="container">
         <List>
-          {restaurantes.map((restaurante) => (
+          {restaurantes?.map((restaurante) => (
             <li key={restaurante.id}>
               <Restaurant
                 id={restaurante.id}

@@ -82,13 +82,15 @@ export const ModalContainer = styled.div`
 export const ModalContent = styled.div`
   background-color: ${cores.vermelho};
   max-width: 1024px;
-C
   height: 344px;
   position: relative;
   z-index: 1;
   display: flex;
   align-items: flex-start;
   padding: 32px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
   header {
     img {
       position: absolute;
@@ -108,13 +110,11 @@ C
     width: 344px;
     height: 600px;
     flex-direction: column;
-    align-items: center;
 
     > img {
-    margin: 0;
-    margin-bottom: 8px;
-  }
-
+      margin: 0;
+      margin-bottom: 8px;
+    }
   }
 `
 export const Description = styled.div`
@@ -133,30 +133,5 @@ export const Description = styled.div`
   }
   ${ButtonContainer} {
     padding: 4px 7px;
-  }
-
-  @media (max-width: ${breakpoints.tablet}) {
-    div {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: justify;
-
-      h4 {
-        font-size: 14px;
-      }
-      p {
-        font-size: 10px;
-        font-weight: 400;
-        color: ${cores.branca};
-        line-height: 22px;
-        margin-top: 16px;
-        margin-bottom: 27px;
-      }
-    }
-
-    ${ButtonContainer} {
-      padding: 4px 7px;
-    }
   }
 `

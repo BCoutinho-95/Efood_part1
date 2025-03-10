@@ -1,42 +1,17 @@
-import { useEffect, useState } from 'react'
 import HeaderHome from '../../components/HeaderHome'
 import RestaurantsList from '../../components/RestaurantsList'
 
 import { useGetFeaturedRestauranteQuery } from '../../services/api'
 
-export interface CardapioItem {
-  foto: string
-  preco: number
-  id: number
-  nome: string
-  descricao: string
-  porcao: string
-}
-
-export type Restaurante = {
-  id: number
-  titulo: string
-  destacado?: boolean
-  tipo?: string
-  avaliacao?: number
-  descricao: string
-  capa: string
-  cardapio: CardapioItem[]
-}
-
 const Home = () => {
-  const { data: restaurantes } = useGetFeaturedRestauranteQuery()
+  const { data: restaurantes, isLoading } = useGetFeaturedRestauranteQuery()
 
-  if (restaurantes) {
-    return (
-      <>
-        <HeaderHome />
-        <RestaurantsList restaurantes={restaurantes} />
-      </>
-    )
-  }
-
-  return <h3>Carregando...</h3>
+  return (
+    <>
+      <HeaderHome />
+      <RestaurantsList isLoading={isLoading} restaurantes={restaurantes} />
+    </>
+  )
 }
 
 // const [restaurantes, setRestaurante] = useState<Restaurante[]>([])

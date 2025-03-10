@@ -1,15 +1,20 @@
-import { CardapioItem } from '../../pages/Home'
+import Loader from '../Loader'
 import Product from '../Product'
 import { ProductListStyle } from './styles'
 
 type Props = {
-  produtos: CardapioItem[]
+  produtos?: CardapioItem[]
+  isLoading: boolean
 }
 
-const ProductList = ({ produtos }: Props) => {
+const ProductList = ({ produtos, isLoading }: Props) => {
+  if (isLoading) {
+    return <Loader />
+  }
+
   return (
     <ProductListStyle>
-      {produtos.map((produto) => (
+      {produtos?.map((produto) => (
         <Product
           key={produto.id}
           id={produto.id}

@@ -57,6 +57,7 @@ export const Links = styled.ul`
 export const LinkCart = styled.a`
   display: flex;
   margin-left: 193px;
+  cursor: pointer;
 
   @media (max-width: ${breakpoints.desktop}) {
     margin: 0;

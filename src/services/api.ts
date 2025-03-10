@@ -1,5 +1,38 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { CardapioItem, Restaurante } from '../pages/Home'
+
+type Product = {
+  id: number
+  price: number
+}
+
+type PurchasePayload = {
+  products: Product[]
+  delivery: {
+    receiver: string
+    address: {
+      description: string
+      city: string
+      zipCode: string
+      number: number
+      complement: string
+    }
+  }
+  payment: {
+    card: {
+      name: string
+      number: string
+      code: number
+      expires: {
+        month: number
+        year: number
+      }
+    }
+  }
+}
+
+type PurchaseResponse = {
+  orderId: string
+}
 
 const api = createApi({
   baseQuery: fetchBaseQuery({
@@ -14,6 +47,13 @@ const api = createApi({
     }),
     getRpgGames: builder.query<CardapioItem[], void>({
       query: () => 'restaurantes'
+    }),
+    purchase: builder.mutation<PurchaseResponse, PurchasePayload>({
+      query: (body) => ({
+        url: 'checkout',
+        method: 'POST',
+        body
+      })
     })
   })
 })
@@ -21,7 +61,8 @@ const api = createApi({
 export const {
   useGetFeaturedRestauranteQuery,
   useGetRestauranteQuery,
-  useGetRpgGamesQuery
+  useGetRpgGamesQuery,
+  usePurchaseMutation
 } = api
 
 export default api

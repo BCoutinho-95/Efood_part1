@@ -29,9 +29,8 @@ export const HeaderBar = styled.header`
     justify-content: center;
     align-items: center;
     img {
-      margin-top: 32px;
-      margin-right: 108px;
-      margin-left: 108px;
+      display: flex;
+      margin: auto;
     }
   }
 `
